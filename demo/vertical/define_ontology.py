@@ -52,12 +52,12 @@ with onto:
     #
     # Relations
     # =========
-    class has_unit(emmo.has_convention):
-        """Associates a unit to a property."""
+    class has_unit(emmo.has_part):
+        """Associates a unit to a physical quantity."""
         pass
 
-    class is_unit_for(emmo.is_convention_for):
-        """Associates a property to a unit."""
+    class is_unit_for(emmo.is_part_of):
+        """Associates a physical quantity to a unit."""
         inverse_property = has_unit
 
     class has_type(emmo.has_convention):
@@ -209,6 +209,21 @@ with onto:
         """
         is_a = [has_type.exactly(1, string)]
 
+
+    #
+    # Sub-dimensional classes
+    # -----------------------
+    class interface(emmo.surface):
+        """A 2D surface associated with a boundary."""
+        label = ['interface']
+        is_a = [emmo.has_property.exactly(1, area),
+                emmo.has_property.exactly(1, work_of_separation),
+                emmo.has_property.exactly(1, traction_separation)]
+
+    # Aassign `measured_volume` as a property of `emmo.volume`
+    emmo.volume.is_a.append(emmo.has_property.exactly(1, measured_volume))
+
+
     #
     # Material classes
     # ================
@@ -234,21 +249,6 @@ with onto:
     emmo['e-bonded_atom'].is_a.append(emmo.has_property.exactly(1, position))
 
 
-    #
-    #
-    class interface(emmo.surface):
-        """A 2D surface associated with a boundary.
-
-        Commonly referred to as "interface".
-        """
-        label = ['interface']
-        is_a = [emmo.has_property.exactly(1, area),
-                emmo.has_property.exactly(1, work_of_separation),
-                emmo.has_property.exactly(1, traction_separation)]
-
-    # Aassign `measured_volume` as a property of `emmo.volume`
-    emmo.volume.is_a.append(emmo.has_property.exactly(1, measured_volume))
-
     class boundary(emmo.state):
         """A boundary is a 4D region of spacetime shared by two material
         entities.
@@ -265,16 +265,8 @@ with onto:
 
     class representative_volume_element(emmo.solid):
         """The minimum volume that represents the system in question."""
-        is_a = [emmo.has_spatial_direct_part.only(fem_unit_cell)]
-
-    #class grain(crystal):
-    #    """The complexity with subgrains is ignored here..."""
-    #    label = ['grain']
-    #    is_a = [emmo.has_property.exactly(1, orientation),
-    #            emmo.has_property.exactly(1, measured_volume),
-    #    ]
-
-    #
+        is_a = [#emmo.has_spatial_direct_part.only(fem_unit_cell)
+        ]
 
 
     #
@@ -290,14 +282,19 @@ with onto:
         is_a = [emmo.has_space_slice.exactly(1, emmo.volume)]
 
     class cohesive_element(fem_unit_cell):
-        is_a = [boundary,
-                emmo.has_spatial_direct_part.exactly(2, phase),
+        is_a = [#boundary,
+                #emmo.has_spatial_direct_part.exactly(2, phase),
                 emmo.has_space_slice.min(6, vertex),
-                emmo.has_space_slice.exactly(1, interface)]
+                #emmo.has_space_slice.exactly(1, interface),
+        ]
 
     class bulk_element(fem_unit_cell):
-        is_a = [emmo.has_spatial_direct_part.exactly(1, phase),
+        is_a = [#emmo.has_spatial_direct_part.exactly(1, phase),
                 emmo.has_space_slice.min(4, vertex)]
+
+
+
+
 
 
 # Sync attributes to make sure that all classes get a `label` and to
