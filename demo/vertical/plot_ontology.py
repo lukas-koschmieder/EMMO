@@ -46,7 +46,7 @@ graph.write_png('figs/types+properties.png')
 
 # Properties and materials
 items = [
-    onto.physical_quantity, emmo['e-bonded_atom']] + materials + subdimensional
+    onto.physical_quantity, onto['e-bonded_atom']] + materials + subdimensional
 graph = onto.get_dot_graph(items, relations=True, style='uml', constraint=None)
 graph.write_png('figs/properties+materials.png')
 
