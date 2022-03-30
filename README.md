@@ -59,7 +59,7 @@ Please create an issue if you have a public domain ontology that you think shoul
 | Ontology for the Battery Value Chain (BVC) | [https://github.com/Battery-Value-Chain-Ontology/ontology](https://github.com/Battery-Value-Chain-Ontology/ontology)                      |
 | Crystallography                            | [https://github.com/emmo-repo/domain-crystallography](https://github.com/emmo-repo/domain-crystallography)                                |
 | Mechanical Testing                         | [https://github.com/emmo-repo/domain-mechanical-testing](https://github.com/emmo-repo/domain-mechanical-testing)                          |
-| Microstructure domain ontology             | [https://github.com/emmo-repo/domain-ontology](https://github.com/emmo-repo/domain-ontology)                                              |
+| Microstructure domain ontology             | [https://github.com/emmo-repo/domain-microstructure](https://github.com/emmo-repo/domain-microstructure)                                              |
 | Datamodel ontology                         | [https://github.com/emmo-repo/datamodel-ontology](https://github.com/emmo-repo/datamodel-ontology)                                        |
 | Mappings ontology                          | [https://github.com/emmo-repo/domain-mappings](https://github.com/emmo-repo/domain-mappings)                                              |
 | Atomistic and Electronic Modelling         | [https://github.com/emmo-repo/domain-atomistic](https://github.com/emmo-repo/domain-atomistic)                                            |
